@@ -2,23 +2,29 @@
 #include <reapi>
 #include <lottery>
 
-new const PLUGIN_NAME[] = "Lottery: Deagle";
-new const PLUGIN_VERSION[] = "1.0";
-new const PLUGIN_AUTHOR[] = "MakapoH.";
+new const PLUGIN_NAME[] = 		"Lottery: Deagle";
+new const PLUGIN_VERSION[] = 	"1.1";
+new const PLUGIN_AUTHOR[] = 	"MakapoH.";
 
-const DROP_CHANCE = 10; // Шанс выпадения Deagle
-
+new drop_chance;
 new bool:wait_spawn[MAX_CLIENTS + 1];
 
 public plugin_init()
 {
 	register_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR);
-	register_lottery_prize(DROP_CHANCE, "lottery_prize");
+
+	new cvar_pointer = create_cvar("lottery_deagle_drop_chance", "10", FCVAR_NONE, "Шанс выпадения пистолета Deagle", true, 1.0, true, 100.0);
+	bind_pcvar_num(cvar_pointer, drop_chance);
+
+	register_lottery_prize(drop_chance, "lottery_prize");
 
 	RegisterHookChain(RG_CBasePlayer_Spawn, "CBasePlayer_Spawn_Post", 1);
 }
 
-public client_putinserver(id)
+public plugin_cfg()
+	AutoExecConfig(true, "lottery_deagle");
+
+public client_disconnected(id)
 	wait_spawn[id] = false;
 
 public CBasePlayer_Spawn_Post(const id)
