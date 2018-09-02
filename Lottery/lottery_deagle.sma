@@ -2,9 +2,9 @@
 #include <reapi>
 #include <lottery>
 
-new const PLUGIN_NAME[] = 		"Lottery: Deagle";
-new const PLUGIN_VERSION[] = 	"1.1";
-new const PLUGIN_AUTHOR[] = 	"MakapoH.";
+new const PLUGIN_NAME[] 	= "Lottery: Deagle";
+new const PLUGIN_VERSION[] 	= "1.1";
+new const PLUGIN_AUTHOR[] 	= "MakapoH.";
 
 new drop_chance;
 new bool:wait_spawn[MAX_CLIENTS + 1];

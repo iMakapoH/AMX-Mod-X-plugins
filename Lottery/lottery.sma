@@ -1,9 +1,9 @@
 #include <amxmodx>
 #include <reapi>
 
-new const PLUGIN_NAME[] = "Lottery";
-new const PLUGIN_VERSION[] = "3.0";
-new const PLUGIN_AUTHOR[] = "MakapoH.";
+new const PLUGIN_NAME[] 	= "Lottery";
+new const PLUGIN_VERSION[] 	= "3.0";
+new const PLUGIN_AUTHOR[] 	= "MakapoH.";
 
 new const settings_text[][] =
 {
@@ -300,7 +300,7 @@ DefinitionPrize(id)
 
 ReadSettingsFile()
 {
-	new configs_dir[256], file_path[256];
+	new configs_dir[MAX_FMT_LENGTH], file_path[MAX_FMT_LENGTH];
 	get_localinfo("amxx_configsdir", configs_dir, charsmax(configs_dir));
 	formatex(file_path, charsmax(file_path), "%s/lottery.ini", configs_dir);
 
@@ -321,7 +321,7 @@ ReadSettingsFile()
 
 	array_prizes = ArrayCreate(List_PrizeData);
 
-	new buffer[512], key[32], value[192];
+	new buffer[MAX_STRING_LENGTH], key[32], value[192];
 	new parse_get_prize[7], parse_prize_drop_chance[5], parse_message_status[2];
 
 	enum

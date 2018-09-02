@@ -1,19 +1,17 @@
 /**
-* Регистрация выигрыша.
+* Registration of a new lottery win.
 *
-* @note На каждый плагин 1 регистрация.
-*		То есть, нельзя в одном плагине регистрировать
-*		сразу несколько выигрышей.
-* @note Обработчик будет вызван следующим образом:
+* @note In 1 plugin there can be only 1 registration.
+* @note Call the handler in the following manner:
 *
 * public lottery_prize(id)
 *
-*	id - индекс игрока
+*	id - Player index
 *
-* @param drop_chance		Шанс выпадения
-* @param callback			Обработчик
+* @param chance				The probability of obtaining
+* @param handler			Callback function
 *
-* @noreturn
+* @return					Forward handle
 */
 
-native register_lottery_prize(drop_chance, callback[]);
+native register_lottery_prize(chance, handler[]);
